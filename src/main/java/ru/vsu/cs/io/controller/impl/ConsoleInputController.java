@@ -1,10 +1,10 @@
-package ru.vsu.cs.io.impl;
+package ru.vsu.cs.io.controller.impl;
 
 import ru.vsu.cs.container.NegativeRepliesContainer;
 import ru.vsu.cs.container.PositiveRepliesContainer;
 import ru.vsu.cs.container.ResponseType;
-import ru.vsu.cs.io.InputController;
-import ru.vsu.cs.io.OutputController;
+import ru.vsu.cs.io.controller.InputController;
+import ru.vsu.cs.io.controller.OutputController;
 
 import java.util.Scanner;
 
@@ -30,7 +30,7 @@ public class ConsoleInputController implements InputController {
     @Override
     public ResponseType handleResponse() {
         ResponseType responseType = getUserResponse();
-        while(responseType == ResponseType.UNCLEAR) {
+        while (responseType == ResponseType.UNCLEAR) { // do while?
             outputController.onUnclearResponseMessage();
             responseType = getUserResponse();
         }

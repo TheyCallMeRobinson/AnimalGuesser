@@ -1,7 +1,7 @@
-package ru.vsu.cs.io.impl;
+package ru.vsu.cs.io.controller.impl;
 
-import ru.vsu.cs.io.OutputController;
-import ru.vsu.cs.io.Printer;
+import ru.vsu.cs.io.controller.OutputController;
+import ru.vsu.cs.io.controller.Printer;
 import ru.vsu.cs.io.resource.StringResource;
 
 

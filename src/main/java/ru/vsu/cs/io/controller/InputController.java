@@ -1,4 +1,4 @@
-package ru.vsu.cs.io;
+package ru.vsu.cs.io.controller;
 
 import ru.vsu.cs.container.ResponseType;
 

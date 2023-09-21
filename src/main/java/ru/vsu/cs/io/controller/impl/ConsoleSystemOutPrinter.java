@@ -1,6 +1,6 @@
-package ru.vsu.cs.io.impl;
+package ru.vsu.cs.io.controller.impl;
 
-import ru.vsu.cs.io.Printer;
+import ru.vsu.cs.io.controller.Printer;
 
 public class ConsoleSystemOutPrinter implements Printer {
 
