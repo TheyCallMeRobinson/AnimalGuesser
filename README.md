@@ -19,7 +19,7 @@ Animal Guesser Game for RedCollar intern test task
    - Сделать capitalizer для вводимых пользователем названий животных;
    - Переработать структуру хранения классов.
 
-![Структура хранения данных в игре](src/main/res/png/AnimalGuesser_Structure.png)
-![Вид диалогового окна при выборе файла](src/main/res/png/Open_File_dialog.png)
-![Пример работы игры](src/main/res/png/Game_Example.png)
-![Пример хранимых данных в файле](src/main/res/png/Saved_JSON_Example.png)
+![Структура хранения данных в игре](src/main/resources/png/AnimalGuesser_Structure.png)
+![Вид диалогового окна при выборе файла](src/main/resources/png//Open_File_dialog.png)
+![Пример работы игры](src/main/resources/png/Game_Example.png)
+![Пример хранимых данных в файле](src/main/resources/png/Saved_JSON_Example.png)
