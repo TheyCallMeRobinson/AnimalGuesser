@@ -1,9 +1,15 @@
 package ru.vsu.cs.service;
 
+import ru.vsu.cs.container.ResponseType;
 import ru.vsu.cs.io.InputController;
 import ru.vsu.cs.io.OutputController;
+import ru.vsu.cs.io.impl.ConsoleInputController;
+import ru.vsu.cs.io.impl.ConsoleOutputController;
 import ru.vsu.cs.model.AnimalNode;
 import ru.vsu.cs.model.GameStartNode;
+import ru.vsu.cs.model.QuestionNode;
+
+import java.util.ArrayList;
 
 public class AnimalGuesserGameService {
 
@@ -16,20 +22,74 @@ public class AnimalGuesserGameService {
     public AnimalGuesserGameService(GameStartNode startAnimal) {
         gameStartNode = startAnimal;
         gameOverFlag = false;
+        inputController = new ConsoleInputController();
+        outputController = new ConsoleOutputController();
     }
 
-    public void invokeService() {}
+    public void invokeService() {
+        onNewGameStart();
+    }
 
-    private void onNewGameStart() {}
+    private void onNewGameStart() {
+        outputController.onNewGameStartMessage(gameStartNode.getStartQuestion());
 
-    private void onNextQuestion() {}
+        if (inputController.handleResponse() == ResponseType.POSITIVE) {
+            currentAnimal = gameStartNode.getPositiveResponseSubtreeRoot();
+        } else {
+            currentAnimal = gameStartNode.getNegativeResponseSubtreeRoot();
+        }
 
-    private void onNegativeResponse() {}
+        gameLoop();
+    }
+
+    private void gameLoop() {
+        while(!gameOverFlag) {
+            onNextQuestion();
+        }
+    }
+
+    private void onNextQuestion() {
+        outputController.animalDecisionMessage(currentAnimal.getAnimalName());
+
+        if (inputController.handleResponse() == ResponseType.POSITIVE) {
+            onGameOver();
+        } else {
+            onNegativeResponse();
+        }
+    }
+
+    private void onNegativeResponse() {
+        for (var question : currentAnimal.getQuestions()) {
+            outputController.animalDecisionMessage(question.getQuestionText());
+            if (inputController.handleResponse() == ResponseType.POSITIVE) {
+                currentAnimal = question.getNextAnimal();
+                return;
+            }
+        }
+        onGameLoose();
+        onGameOver();
+    }
 
     private void onPositiveResponse() {}
 
-    private void onGameLoose() {}
+    private void onGameLoose() {
+        outputController.onGameLooseAskAnimalName();
+        String animalName = inputController.readUserInput();
+        outputController.onGameLooseAskAnimalFeature(animalName, currentAnimal.getAnimalName());
+        String animalFeature = inputController.readUserInput();
+        currentAnimal.getQuestions().add(new QuestionNode(new AnimalNode(animalName, new ArrayList<>()), animalFeature));
+    }
 
-    private void onGameOver() {}
+    private void onGameOver() {
+        outputController.onGameOverAskForNextGame();
+        ResponseType responseType = inputController.handleResponse();
+        if (responseType == ResponseType.POSITIVE) {
+            onNewGameStart();
+        } else {
+            outputController.onGameOverFarewell();
+            inputController.closeInputChannel();
+            gameOverFlag = true;
+        }
+    }
 
 }
