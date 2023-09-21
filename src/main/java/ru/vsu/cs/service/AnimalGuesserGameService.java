@@ -1,10 +1,11 @@
 package ru.vsu.cs.service;
 
 import ru.vsu.cs.container.ResponseType;
-import ru.vsu.cs.io.InputController;
-import ru.vsu.cs.io.OutputController;
-import ru.vsu.cs.io.impl.ConsoleInputController;
-import ru.vsu.cs.io.impl.ConsoleOutputController;
+import ru.vsu.cs.io.controller.InputController;
+import ru.vsu.cs.io.controller.OutputController;
+import ru.vsu.cs.io.controller.impl.ConsoleInputController;
+import ru.vsu.cs.io.controller.impl.ConsoleOutputController;
+import ru.vsu.cs.io.gson.Gsonifier;
 import ru.vsu.cs.io.resource.StringResource;
 import ru.vsu.cs.model.AnimalNode;
 import ru.vsu.cs.model.GameStartNode;
@@ -14,9 +15,10 @@ import java.util.ArrayList;
 
 public class AnimalGuesserGameService {
 
-    private final GameStartNode gameStartNode;
     private final InputController inputController;
     private final OutputController outputController;
+    private final Gsonifier gsonifier;
+    private GameStartNode gameStartNode;
     private AnimalNode currentAnimal;
     private Boolean gameOverFlag;
 
@@ -29,10 +31,32 @@ public class AnimalGuesserGameService {
         gameOverFlag = false;
         outputController = new ConsoleOutputController(gameLanguageStringResource);
         inputController = new ConsoleInputController(outputController);
+        gsonifier = new Gsonifier();
     }
 
     public void invokeService() {
+        offerToReadSaveFile();
         onNewGameStart();
+    }
+
+    private void offerToReadSaveFile() {
+        System.out.println("Would you like to read save file?");
+
+        if (inputController.handleResponse() == ResponseType.POSITIVE) {
+            gameStartNode = gsonifier.readSavedGameStateFromFile();
+        } else {
+            GameStartNode savedData = gsonifier.readLastSavedGameState();
+            if (savedData != null) {
+                gameStartNode = gsonifier.readLastSavedGameState();
+            }
+        }
+    }
+
+    private void offerToSaveGameState() {
+        System.out.println("Would you like to save game state?");
+        if (inputController.handleResponse() == ResponseType.POSITIVE) {
+            gsonifier.saveGameState(gameStartNode);
+        }
     }
 
     private void onNewGameStart() {
@@ -93,9 +117,18 @@ public class AnimalGuesserGameService {
             onNewGameStart();
         } else {
             outputController.onGameOverFarewell();
-            inputController.closeInputChannel();
+            offerToSaveGameState();
             gameOverFlag = true;
+            inputController.closeInputChannel();
         }
+    }
+
+    private void onSaveGameState() {
+
+    }
+
+    private void onLoadGameState() {
+
     }
 
 }

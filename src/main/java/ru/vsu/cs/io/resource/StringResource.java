@@ -12,4 +12,6 @@ public interface StringResource {
     String getNextGameQuestionMessage();
     String getFarewellMessage();
     String getUnclearResponseMessage();
+    String getReadSaveFileMessage();
+    String getSaveGameStateMessage();
 }

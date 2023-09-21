@@ -10,4 +10,6 @@ public interface OutputController {
     void onGameOverAskForNextGame();
     void onGameOverFarewell();
     void onUnclearResponseMessage();
+    void onReadFileMessage();
+    void onSaveStateMessage();
 }

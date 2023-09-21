@@ -1,0 +1,11 @@
+{
+  "positiveResponseSubtreeRoot": {
+    "animalName": "Cat",
+    "questions": []
+  },
+  "negativeResponseSubtreeRoot": {
+    "animalName": "Whale",
+    "questions": []
+  },
+  "startQuestion": "lives on ground"
+}

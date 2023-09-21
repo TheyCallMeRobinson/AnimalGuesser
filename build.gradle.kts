@@ -22,8 +22,14 @@ repositories {
 }
 
 dependencies {
+	// Gson
+	implementation("com.google.code.gson:gson:2.10.1")
+
+	// Lombok
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
+
+	// Spring test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

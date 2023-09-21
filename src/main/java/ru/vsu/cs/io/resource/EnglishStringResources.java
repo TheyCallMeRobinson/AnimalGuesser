@@ -23,7 +23,7 @@ public class EnglishStringResources implements StringResource {
     }
 
     public String getWhatAnimalWasWishedMessage() {
-        return "What animal did you wished?";
+        return "What animal did you wish?";
     }
 
     public String getHowDoesWishedAnimalDifferMessageFormatted() {
@@ -40,5 +40,13 @@ public class EnglishStringResources implements StringResource {
 
     public String getUnclearResponseMessage() {
         return "I didn't understand what you meant, please repeat your answer";
+    }
+
+    public String getReadSaveFileMessage() {
+        return "Would you like to read save file?";
+    }
+
+    public String getSaveGameStateMessage() {
+        return "Would you like to save game state?";
     }
 }

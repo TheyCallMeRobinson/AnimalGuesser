@@ -41,4 +41,12 @@ public class RussianStringResources implements StringResource {
     public final String getUnclearResponseMessage() {
         return "Я не понял, что вы имели ввиду, пожалуйста, повторите свой ответ";
     }
+
+    public String getReadSaveFileMessage() {
+        return "Хотите загрузить игру из файла?";
+    }
+
+    public String getSaveGameStateMessage() {
+        return "Хотите сохранить состояние игры?";
+    }
 }

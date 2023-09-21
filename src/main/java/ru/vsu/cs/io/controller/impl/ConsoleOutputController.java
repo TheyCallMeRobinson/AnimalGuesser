@@ -62,4 +62,16 @@ public class ConsoleOutputController implements OutputController {
         String message = stringResource.getUnclearResponseMessage();
         consolePrinter.printNewLineMessage(message);
     }
+
+    @Override
+    public void onReadFileMessage() {
+        String message = stringResource.getReadSaveFileMessage();
+        consolePrinter.printNewLineMessage(message);
+    }
+
+    @Override
+    public void onSaveStateMessage() {
+        String message = stringResource.getSaveGameStateMessage();
+        consolePrinter.printNewLineMessage(message);
+    }
 }
