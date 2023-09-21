@@ -1,7 +1,7 @@
 package ru.vsu.cs.service;
 
-import ru.vsu.cs.controller.InputController;
-import ru.vsu.cs.controller.OutputController;
+import ru.vsu.cs.io.InputController;
+import ru.vsu.cs.io.OutputController;
 import ru.vsu.cs.model.AnimalNode;
 import ru.vsu.cs.model.GameStartNode;
 

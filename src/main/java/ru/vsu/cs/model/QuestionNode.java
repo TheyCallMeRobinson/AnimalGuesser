@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class QuestionNode {
 
-    public AnimalNode nextAnimal;
-    public String questionText;
+    private AnimalNode nextAnimal;
+    private String questionText;
 }

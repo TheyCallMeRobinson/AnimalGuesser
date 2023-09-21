@@ -7,6 +7,6 @@ import java.util.List;
 @Data
 public class AnimalNode {
 
-    public String animalName;
-    public List<QuestionNode> questions;
+    private String animalName;
+    private List<QuestionNode> questions;
 }
