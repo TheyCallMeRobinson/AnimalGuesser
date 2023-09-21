@@ -40,8 +40,7 @@ public class AnimalGuesserGameService {
     }
 
     private void offerToReadSaveFile() {
-        System.out.println("Would you like to read save file?");
-
+        outputController.onReadFileMessage();
         if (inputController.handleResponse() == ResponseType.POSITIVE) {
             gameStartNode = gsonifier.readSavedGameStateFromFile();
         } else {
@@ -53,7 +52,7 @@ public class AnimalGuesserGameService {
     }
 
     private void offerToSaveGameState() {
-        System.out.println("Would you like to save game state?");
+        outputController.onSaveStateMessage();
         if (inputController.handleResponse() == ResponseType.POSITIVE) {
             gsonifier.saveGameState(gameStartNode);
         }
@@ -97,9 +96,6 @@ public class AnimalGuesserGameService {
         }
         onGameLoose();
         onGameOver();
-    }
-
-    private void onPositiveResponse() {
     }
 
     private void onGameLoose() {

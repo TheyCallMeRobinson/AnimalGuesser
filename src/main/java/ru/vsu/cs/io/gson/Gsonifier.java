@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Gsonifier {
 
     private final String DEFAULT_FILEPATH = "src/main/resources/";
-    private final String DEFAULT_FILENAME = "defaultSaveFile.txt";
+    private final String DEFAULT_FILENAME = "defaultSaveFile.save";
     private final Gson gson;
     private final TimeFormatter timeFormatter;
     private final FileSaver fileSaver;
@@ -60,10 +60,15 @@ public class Gsonifier {
         GameStartNode gameStartNode = null;
         try {
             String filepath = filePicker.pickFile(DEFAULT_FILEPATH);
+            if (filepath == null || filepath.isEmpty()) {
+                filepath = DEFAULT_FILEPATH + DEFAULT_FILENAME;
+            }
             String data = fileReader.readFile(filepath);
             gameStartNode = gson.fromJson(data, GameStartNode.class);
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println(fileNotFoundException.getMessage());
+        } catch (IllegalStateException illegalStateException) {
+            System.err.println("Wrong file content");
         }
         return gameStartNode;
     }
