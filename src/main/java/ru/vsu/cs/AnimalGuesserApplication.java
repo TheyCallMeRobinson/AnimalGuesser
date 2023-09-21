@@ -4,7 +4,7 @@ import ru.vsu.cs.resource.EnglishStringResources;
 import ru.vsu.cs.resource.StringResource;
 import ru.vsu.cs.service.AnimalGuesserGameService;
 
-
+// Штирлицу попала в голову шутка. "Разрывная", - раскинул мозгами Штирлиц.
 public class AnimalGuesserApplication {
 
 	public static void main(String[] args) {
