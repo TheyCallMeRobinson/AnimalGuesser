@@ -22,44 +22,44 @@ public class ConsoleOutputController implements OutputController {
 
     @Override
     public void onNewGameStartMessage(String startQuestion) {
-        String message = stringResource.NEW_GAME_GREETING_MESSAGE;
+        String message = stringResource.getNewGameGreetingMessage();
         consolePrinter.printNewLineMessage(message);
         animalDecisionMessage(startQuestion);
     }
 
     @Override
     public void animalDecisionMessage(String animalName) {
-        String formattedMessage = stringResource.ANIMAL_ASSUMPTION_MESSAGE_FORMATTED;
+        String formattedMessage = stringResource.getAnimalAssumptionMessageFormatted();
         consolePrinter.printFormattedMessage(formattedMessage, animalName);
     }
 
     @Override
     public void onGameLooseAskAnimalName() {
-        String message = stringResource.WHAT_ANIMAL_WAS_WISHED_MESSAGE;
+        String message = stringResource.getWhatAnimalWasWishedMessage();
         consolePrinter.printNewLineMessage(message);
     }
 
     @Override
     public void onGameLooseAskAnimalFeature(String newAnimalName, String currentAnimalName) {
-        String formattedMessage = stringResource.HOW_DOES_WISHED_ANIMAL_DIFFER_MESSAGE_FORMATTED;
+        String formattedMessage = stringResource.getHowDoesWishedAnimalDifferMessageFormatted();
         consolePrinter.printFormattedMessage(formattedMessage, newAnimalName, currentAnimalName);
     }
 
     @Override
     public void onGameOverAskForNextGame() {
-        String message = stringResource.NEXT_GAME_QUESTION_MESSAGE;
+        String message = stringResource.getNextGameQuestionMessage();
         consolePrinter.printNewLineMessage(message);
     }
 
     @Override
     public void onGameOverFarewell() {
-        String message = stringResource.FAREWELL_MESSAGE;
+        String message = stringResource.getFarewellMessage();
         consolePrinter.printNewLineMessage(message);
     }
 
     @Override
     public void onUnclearResponseMessage() {
-        String message = stringResource.UNCLEAR_RESPONSE_MESSAGE;
+        String message = stringResource.getUnclearResponseMessage();
         consolePrinter.printNewLineMessage(message);
     }
 }

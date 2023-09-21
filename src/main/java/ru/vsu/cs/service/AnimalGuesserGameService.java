@@ -22,9 +22,9 @@ public class AnimalGuesserGameService {
 
     public AnimalGuesserGameService(StringResource gameLanguageStringResource) {
         gameStartNode = new GameStartNode(
-                new AnimalNode(gameLanguageStringResource.POSITIVE_RESPONSE_SUBTREE_ROOT_ANIMAL_NAME, new ArrayList<>()),
-                new AnimalNode(gameLanguageStringResource.NEGATIVE_RESPONSE_SUBTREE_ROOT_ANIMAL_NAME, new ArrayList<>()),
-                gameLanguageStringResource.START_QUESTION
+                new AnimalNode(gameLanguageStringResource.getPositiveResponseSubtreeRootAnimalName(), new ArrayList<>()),
+                new AnimalNode(gameLanguageStringResource.getNegativeResponseSubtreeRootAnimalName(), new ArrayList<>()),
+                gameLanguageStringResource.getStartQuestion()
         );
         gameOverFlag = false;
         outputController = new ConsoleOutputController(gameLanguageStringResource);
