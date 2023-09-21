@@ -2,7 +2,7 @@ package ru.vsu.cs.io.controller.impl;
 
 import ru.vsu.cs.io.controller.OutputController;
 import ru.vsu.cs.io.controller.Printer;
-import ru.vsu.cs.io.resource.StringResource;
+import ru.vsu.cs.resource.StringResource;
 
 
 public class ConsoleOutputController implements OutputController {

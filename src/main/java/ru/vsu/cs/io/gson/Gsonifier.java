@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import ru.vsu.cs.io.FilePicker;
 import ru.vsu.cs.io.FileReader;
 import ru.vsu.cs.io.FileSaver;
-import ru.vsu.cs.io.TimeFormatter;
 import ru.vsu.cs.model.GameStartNode;
 
 import java.io.File;
@@ -17,14 +16,12 @@ public class Gsonifier {
     private final String DEFAULT_FILEPATH = "src/main/resources/";
     private final String DEFAULT_FILENAME = "defaultSaveFile.save";
     private final Gson gson;
-    private final TimeFormatter timeFormatter;
     private final FileSaver fileSaver;
     private final FilePicker filePicker;
     private final FileReader fileReader;
 
     public Gsonifier() {
         gson = new GsonBuilder().setPrettyPrinting().create();
-        timeFormatter = new TimeFormatter();
         fileSaver = new FileSaver();
         filePicker = new FilePicker();
         fileReader = new FileReader();
@@ -51,7 +48,7 @@ public class Gsonifier {
             String data = fileReader.readFile(DEFAULT_FILEPATH + DEFAULT_FILENAME);
             gameStartNode = gson.fromJson(data, GameStartNode.class);
         } catch (FileNotFoundException fileNotFoundException) {
-            System.err.println(fileNotFoundException.getMessage());
+            System.err.println("File was not found");
         }
         return gameStartNode;
     }
@@ -66,7 +63,7 @@ public class Gsonifier {
             String data = fileReader.readFile(filepath);
             gameStartNode = gson.fromJson(data, GameStartNode.class);
         } catch (FileNotFoundException fileNotFoundException) {
-            System.err.println(fileNotFoundException.getMessage());
+            System.err.println("File was not found");
         } catch (IllegalStateException illegalStateException) {
             System.err.println("Wrong file content");
         }
@@ -94,7 +91,7 @@ public class Gsonifier {
             String data = fileReader.readFile(filepath);
             return data.isEmpty() || gson.fromJson(data, GameStartNode.class) != null;
         } catch (FileNotFoundException fileNotFoundException) {
-            System.err.println(fileNotFoundException.getMessage());
+            System.err.println("File was not found");
             return true;
         }
     }

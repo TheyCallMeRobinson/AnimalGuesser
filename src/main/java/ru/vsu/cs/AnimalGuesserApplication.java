@@ -1,7 +1,7 @@
 package ru.vsu.cs;
 
-import ru.vsu.cs.io.resource.EnglishStringResources;
-import ru.vsu.cs.io.resource.StringResource;
+import ru.vsu.cs.resource.EnglishStringResources;
+import ru.vsu.cs.resource.StringResource;
 import ru.vsu.cs.service.AnimalGuesserGameService;
 
 

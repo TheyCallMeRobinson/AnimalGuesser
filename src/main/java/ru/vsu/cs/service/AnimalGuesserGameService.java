@@ -1,12 +1,12 @@
 package ru.vsu.cs.service;
 
-import ru.vsu.cs.container.ResponseType;
+import ru.vsu.cs.resource.ResponseType;
 import ru.vsu.cs.io.controller.InputController;
 import ru.vsu.cs.io.controller.OutputController;
 import ru.vsu.cs.io.controller.impl.ConsoleInputController;
 import ru.vsu.cs.io.controller.impl.ConsoleOutputController;
 import ru.vsu.cs.io.gson.Gsonifier;
-import ru.vsu.cs.io.resource.StringResource;
+import ru.vsu.cs.resource.StringResource;
 import ru.vsu.cs.model.AnimalNode;
 import ru.vsu.cs.model.GameStartNode;
 import ru.vsu.cs.model.QuestionNode;
@@ -118,13 +118,4 @@ public class AnimalGuesserGameService {
             inputController.closeInputChannel();
         }
     }
-
-    private void onSaveGameState() {
-
-    }
-
-    private void onLoadGameState() {
-
-    }
-
 }

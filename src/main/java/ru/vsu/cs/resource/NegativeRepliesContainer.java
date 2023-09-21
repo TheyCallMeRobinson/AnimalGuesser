@@ -1,4 +1,4 @@
-package ru.vsu.cs.container;
+package ru.vsu.cs.resource;
 
 import lombok.Getter;
 import lombok.Setter;

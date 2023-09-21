@@ -1,8 +1,8 @@
 package ru.vsu.cs.io.controller.impl;
 
-import ru.vsu.cs.container.NegativeRepliesContainer;
-import ru.vsu.cs.container.PositiveRepliesContainer;
-import ru.vsu.cs.container.ResponseType;
+import ru.vsu.cs.resource.NegativeRepliesContainer;
+import ru.vsu.cs.resource.PositiveRepliesContainer;
+import ru.vsu.cs.resource.ResponseType;
 import ru.vsu.cs.io.controller.InputController;
 import ru.vsu.cs.io.controller.OutputController;
 

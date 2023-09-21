@@ -1,4 +1,4 @@
-package ru.vsu.cs.io.resource;
+package ru.vsu.cs.resource;
 
 public class RussianStringResources implements StringResource {
 

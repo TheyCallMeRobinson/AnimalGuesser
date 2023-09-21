@@ -1,6 +1,6 @@
 package ru.vsu.cs.io.controller;
 
-import ru.vsu.cs.container.ResponseType;
+import ru.vsu.cs.resource.ResponseType;
 
 public interface InputController {
 
