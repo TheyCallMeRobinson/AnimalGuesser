@@ -15,11 +15,11 @@ public class ConsoleInputController implements InputController {
     private final PositiveRepliesContainer positiveReplies;
     private final OutputController outputController;
 
-    public ConsoleInputController() {
+    public ConsoleInputController(OutputController outputController) {
         this.consoleScanner = new Scanner(System.in);
         this.negativeReplies = new NegativeRepliesContainer();
         this.positiveReplies = new PositiveRepliesContainer();
-        this.outputController = new ConsoleOutputController();
+        this.outputController = outputController;
     }
 
     @Override

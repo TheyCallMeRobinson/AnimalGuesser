@@ -5,6 +5,7 @@ import ru.vsu.cs.io.InputController;
 import ru.vsu.cs.io.OutputController;
 import ru.vsu.cs.io.impl.ConsoleInputController;
 import ru.vsu.cs.io.impl.ConsoleOutputController;
+import ru.vsu.cs.io.resource.StringResource;
 import ru.vsu.cs.model.AnimalNode;
 import ru.vsu.cs.model.GameStartNode;
 import ru.vsu.cs.model.QuestionNode;
@@ -13,17 +14,21 @@ import java.util.ArrayList;
 
 public class AnimalGuesserGameService {
 
-    private GameStartNode gameStartNode;
-    private InputController inputController;
-    private OutputController outputController;
+    private final GameStartNode gameStartNode;
+    private final InputController inputController;
+    private final OutputController outputController;
     private AnimalNode currentAnimal;
     private Boolean gameOverFlag;
 
-    public AnimalGuesserGameService(GameStartNode startAnimal) {
-        gameStartNode = startAnimal;
+    public AnimalGuesserGameService(StringResource gameLanguageStringResource) {
+        gameStartNode = new GameStartNode(
+                new AnimalNode(gameLanguageStringResource.POSITIVE_RESPONSE_SUBTREE_ROOT_ANIMAL_NAME, new ArrayList<>()),
+                new AnimalNode(gameLanguageStringResource.NEGATIVE_RESPONSE_SUBTREE_ROOT_ANIMAL_NAME, new ArrayList<>()),
+                gameLanguageStringResource.START_QUESTION
+        );
         gameOverFlag = false;
-        inputController = new ConsoleInputController();
-        outputController = new ConsoleOutputController();
+        outputController = new ConsoleOutputController(gameLanguageStringResource);
+        inputController = new ConsoleInputController(outputController);
     }
 
     public void invokeService() {
@@ -43,7 +48,7 @@ public class AnimalGuesserGameService {
     }
 
     private void gameLoop() {
-        while(!gameOverFlag) {
+        while (!gameOverFlag) {
             onNextQuestion();
         }
     }
@@ -70,7 +75,8 @@ public class AnimalGuesserGameService {
         onGameOver();
     }
 
-    private void onPositiveResponse() {}
+    private void onPositiveResponse() {
+    }
 
     private void onGameLoose() {
         outputController.onGameLooseAskAnimalName();
